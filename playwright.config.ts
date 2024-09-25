@@ -1,4 +1,8 @@
 import {defineConfig, devices} from '@playwright/test';
+import dotenv from 'dotenv';
+
+// Read from ".env" file.
+dotenv.config({ path:  '.env' });
 
 /**
  * Read environment variables from file.
@@ -31,14 +35,15 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     // All requests we send go to this API endpoint.
-    baseURL: 'https://api.github.com',
-    extraHTTPHeaders: {
-      // We set this header per GitHub guidelines.
-      'Accept': 'application/vnd.github.v3+json',
-      // Add authorization token to all requests.
-      // Assuming personal access token available in the environment.
-      'Authorization': `token ${process.env.API_TOKEN}`,
-    },
+    // baseURL: 'https://api.github.com',
+    // extraHTTPHeaders: {
+    //   // We set this header per GitHub guidelines.
+    //   'Accept': 'application/vnd.github.v3+json',
+    //   // Add authorization token to all requests.
+    //   // Assuming personal access token available in the environment.
+    //   'Authorization': `Bearer ${process.env.API_TOKEN}`,
+    //   'X-GitHub-Api-Version': '2022-11-28'
+    // },
   },
 
   /* Configure projects for major browsers */
