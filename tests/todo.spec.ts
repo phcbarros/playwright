@@ -1,4 +1,4 @@
-import {test} from '@playwright/test';
+import {expect, test} from '@playwright/test';
 import {TodoPage} from './todo-page';
 
 test.describe('todo tests', () => {
@@ -17,11 +17,13 @@ test.describe('todo tests', () => {
 
   test('should add an item', async () => {
     await todoPage.addToDo('my item');
-    // ...
+
+    expect(await todoPage.todoItems.count()).toBe(3);
   });
 
   test('should remove an item', async () => {
     await todoPage.remove('item1');
-    // ...
+
+    expect(await todoPage.todoItems.count()).toBe(1);
   });
 });

@@ -1,4 +1,4 @@
-import {test as base} from '@playwright/test';
+import {test as base, expect} from '@playwright/test';
 import {TodoPage} from './todo-page.ts';
 
 // Extend basic test by providing a "todoPage" fixture.
@@ -21,11 +21,13 @@ test('should add an item', {
   }
 }, async ({ todoPage }) => {
   await todoPage.addToDo('my item');
-  // ...
+
+  expect(await todoPage.findByText('my item')).toBeTruthy();
 });
 
 test('should remove an item', async ({ todoPage }) => {
   await todoPage.remove('item1');
-  // ...
+
+  expect(await todoPage.countItems()).toBe(1);
 });
 

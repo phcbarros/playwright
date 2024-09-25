@@ -30,4 +30,12 @@ export class TodoPage {
       await this.todoItems.getByLabel('Delete').first().click();
     }
   }
+
+  async findByText(text: string) {
+    return this.todoItems.filter({ hasText: text });
+  }
+
+  async countItems() {
+    return this.todoItems.count();
+  }
 }
