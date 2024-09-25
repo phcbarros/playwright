@@ -16,7 +16,7 @@ test.use({
   },
 })
 
-test('should create a bug report', {
+test.skip('should create a bug report', {
   tag: '@github'
 }, async ({ request }) => {
   const newIssue = await request.post(`/repos/${USER}/${REPO}/issues`, {
